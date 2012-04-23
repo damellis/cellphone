@@ -30,6 +30,8 @@ void loop()
     char c = Serial.read();
 
     if (c == '\n' || c == '\r') {
+      display("\r\n");
+      display("dialing.");
       if (number.length() > 0) {
         cell.print("ATD");
         cell.print(number);
@@ -43,7 +45,7 @@ void loop()
   }
   
   while (cell.available()) {
-    Serial.write(cell.read());
+    display(cell.read());
   }
 }
 
